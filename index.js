@@ -1,7 +1,3 @@
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
-
 // randomly return Rock Paper or Scissors
 function computerPlay(){
     let choice = Math.floor(Math.random() * 3);
@@ -32,3 +28,33 @@ function playRound(playerSelection, computerSelection){
     else
         return "Draw";
 }
+
+// play 5 rounds for a game
+function game(){
+    let playerWins = 0;
+    let computerWins = 0;
+    for(let i = 0; i < 5; i++){
+        let playerSelection = prompt("Choose Rock, Paper, or Scissors");
+        let computerSelection = computerPlay();
+        let result = playRound(playerSelection, computerSelection);
+        console.log(result);
+        if(result.charAt(4) == "W")
+            playerWins++;
+        else if(result.charAt(4) == "L")
+            computerWins++;
+    }
+    if(playerWins > computerWins)
+        console.log("You Win!");
+    else if(computerWins > playerWins)
+        console.log("You Lose!");
+    else
+        console.log("Draw!");
+}
+
+/*
+const playerSelection = "rock";
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
+*/
+
+game();
