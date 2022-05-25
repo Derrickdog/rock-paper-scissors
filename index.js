@@ -5,17 +5,16 @@ let computerScore = 0;
 function computerPlay(){
     let choice = Math.floor(Math.random() * 3);
     if(choice == 0)
-        return "Rock";
+        return "rock";
     else if(choice == 1)
-        return "Paper";
+        return "paper";
     else
-        return "Scissors";
+        return "scissors";
 }
 
 // play single round
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+    document.querySelector("#winner").textContent = "";
     updateImages(playerSelection, computerSelection);
     let message = "";
 
@@ -48,6 +47,10 @@ function playRound(playerSelection, computerSelection){
     }
     updateScores();
     return message;
+}
+
+function checkWin(){
+    return playerScore === 5 || computerScore === 5;
 }
 
 function updateScores(){
@@ -112,5 +115,16 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         const results = document.querySelector('#results');
         results.textContent = playRound(button.id, computerPlay());
+        if(checkWin()){
+            const winner = document.querySelector("#winner");
+            if(playerScore >= 5){
+                winner.textContent = "YOU WIN!!";
+            }
+            else{
+                winner.textContent = "COMPUTER WINS!!";
+            }
+            playerScore = 0;
+            computerScore = 0;
+        }
     });
 });
