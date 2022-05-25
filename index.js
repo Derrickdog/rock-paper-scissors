@@ -1,3 +1,5 @@
+//game();
+
 // randomly return Rock Paper or Scissors
 function computerPlay(){
     let choice = Math.floor(Math.random() * 3);
@@ -51,10 +53,11 @@ function game(){
         console.log("Draw!");
 }
 
-/*
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
-*/
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const results = document.querySelector('#results');
+        results.textContent = playRound(button.id, computerPlay());
+    });
+});
 
-game();
