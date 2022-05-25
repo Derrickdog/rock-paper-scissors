@@ -4,22 +4,27 @@ body{
     margin: 0;
     padding: 0;
     background-color: dodgerblue;
+    color: white;
+    /*background: linear-gradient(90deg, dodgerblue, white);*/
 }
 
 header{
     background-color: midnightblue;
-
     padding: 20px;
 }
+
 h1{
-    color: white;
+    color: yellow;
     font-size: 48px;
 }
+
 h2{
     font-size: 32px;
 }
+
 p{
     font-size: 24px;
+    margin: 15px;
 }
 
 #choices{
@@ -48,11 +53,15 @@ button{
     font-size: 75px;
     background-color: yellow;
     cursor: pointer;
-    
 }
 
 button:hover{
     transform: scale(1.1);
     border-color: #ffc600;
     box-shadow: 0 0 1rem #ffc600;
+}
+
+#winner{
+    color: yellow;
+    text-shadow: 0 0 1rem #ffc600;
 }
