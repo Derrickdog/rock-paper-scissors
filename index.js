@@ -53,6 +53,7 @@ function game(){
         console.log("Draw!");
 }
 
+// event listener
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
