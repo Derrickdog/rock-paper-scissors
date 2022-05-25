@@ -1,0 +1,13 @@
+body{
+    text-align: center;
+}
+
+#choices{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+#playerChoice, #computerChoice{ 
+    font-size: 150px;
+}

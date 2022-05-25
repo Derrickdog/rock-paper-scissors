@@ -1,4 +1,5 @@
-//game();
+let playerScore = 0;
+let computerScore = 0;
 
 // randomly return Rock Paper or Scissors
 function computerPlay(){
@@ -15,20 +16,72 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-    if(playerSelection == "rock" && computerSelection == "paper")
-        return "You Lose! Paper beats Rock";
-    else if(playerSelection == "rock" && computerSelection == "scissors")
-        return "You Win! Rock beats Scissors";
-    else if(playerSelection == "paper" && computerSelection == "rock")
-        return "You Win! Paper beats Rock";
-    else if(playerSelection == "paper" && computerSelection == "scissors")
-        return "You Lose! Scissors beats Paper";
-    else if(playerSelection == "scissors" && computerSelection == "rock")
-        return "You Lose! Rock beats Scissors";
-    else if(playerSelection == "scissors" && computerSelection == "paper")
-        return "You Win! Scissors beats Paper";
-    else
-        return "Draw";
+    updateImages(playerSelection, computerSelection);
+    let message = "";
+
+    if(playerSelection == "rock" && computerSelection == "paper"){
+        computerScore++;
+        message = "You Lose! Paper beats Rock";
+    }
+    else if(playerSelection == "rock" && computerSelection == "scissors"){
+        playerScore++;
+        message = "You Win! Rock beats Scissors";
+    }
+    else if(playerSelection == "paper" && computerSelection == "rock"){
+        playerScore++;
+        message = "You Win! Paper beats Rock";
+    }
+    else if(playerSelection == "paper" && computerSelection == "scissors"){
+        computerScore++;
+        message = "You Lose! Scissors beats Paper";
+    }
+    else if(playerSelection == "scissors" && computerSelection == "rock"){
+        computerScore++;
+        message = "You Lose! Rock beats Scissors";
+    }
+    else if(playerSelection == "scissors" && computerSelection == "paper"){
+        playerScore++;
+        message = "You Win! Scissors beats Paper";
+    }
+    else{
+        message = "Draw";
+    }
+    updateScores();
+    return message;
+}
+
+function updateScores(){
+    const playerLabel = document.querySelector("#playerScore");
+    const computerLabel = document.querySelector("#computerScore");
+    playerLabel.textContent = `Player: ${playerScore}`;
+    computerLabel.textContent = `Computer: ${computerScore}`;
+}
+
+function updateImages(playerSelection, computerSelection){
+    const playerImage = document.querySelector("#playerChoice");
+    const computerImage = document.querySelector("#computerChoice");
+
+    // update player image
+    if(playerSelection == "rock"){
+        playerImage.textContent = "🪨";
+    }
+    else if(playerSelection == "paper"){
+        playerImage.textContent = "📄";
+    }
+    else{
+        playerImage.textContent = "✂️";
+    }
+
+    // update computer image
+    if(computerSelection == "rock"){
+        computerImage.textContent = "🪨";
+    }
+    else if(computerSelection == "paper"){
+        computerImage.textContent = "📄";
+    }
+    else{
+        computerImage.textContent = "✂️";
+    }
 }
 
 // play 5 rounds for a game
@@ -61,4 +114,3 @@ buttons.forEach((button) => {
         results.textContent = playRound(button.id, computerPlay());
     });
 });
-
